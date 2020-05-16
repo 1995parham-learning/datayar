@@ -20,13 +20,13 @@ At the end, we export `insert`-only SQL files and load them into the testing env
 
 e.g.
 - Remove rows that have not-null `deleted_at`.
-    ```sql
+```sql
 delete from <table> where deleted_at is not null;
-    ```
+```
 - Remove rows that have not-null `deleted_at`.
-    ```sql
+```sql
 delete from <table> where deleted_at is not null;
-    ```
+```
 
 ```sh
 # switch context to the testing environemnt
