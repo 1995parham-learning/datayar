@@ -1,21 +1,22 @@
----
 version: "3.1"
-
 services:
+
   adminer:
     image: adminer
-    restart: always
+    hostname: adminer
+    container_name: adminer
     ports:
       - 8080:8080
 
   postgres:
     image: postgres
+    hostname: postgres
+    container_name: postgres
     environment:
       POSTGRES_DB: elahe
       POSTGRES_USER: elahe
-      POSTGRES_PASSWORD: secret
+      POSTGRES_PASSWORD: elahe
     ports:
-      - "54320:5432"
-    restart: always
+      - 5432:5432
     volumes:
-      - ./output.sql:/docker-entrypoint-initdb.d/surge.sql
+      - ./output.sql:/docker-entrypoint-initdb.d/result.sql
