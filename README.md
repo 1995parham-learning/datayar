@@ -11,11 +11,7 @@ you need to change their structure and fields. Datayar is here to help you.
 First of all, we must export the production database:
 
 ```sh
-# Switch context to the production environemnt
-
 oc project <production-namespace>
-
-# Please note that the following command required password and you need to type it on the fly because all outputs are redirected
 
 oc rsh -c <database-container> <database-pod> pg_dump -U <database-user> <database-name> > output.sql
 ```
@@ -32,13 +28,8 @@ e.g.
 delete from <table> where deleted_at is not null;
 ```
 
-
 ```sh
-# Switch context to the testing environemnt
-
 oc project <testing-namespace>
-
-# Please note that the following command required password and you need to type in the first line of each export file because all inputs are redirected
 
 oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-1>.sql
 oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-2>.sql
