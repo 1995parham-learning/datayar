@@ -31,11 +31,7 @@ e.g.
 ```sql
 delete from <table> where deleted_at is not null;
 ```
-- Remove rows that have not-null `deleted_at`.
 
-```sql
-delete from <table> where deleted_at is not null;
-```
 
 ```sh
 # Switch context to the testing environemnt
