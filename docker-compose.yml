@@ -1,3 +1,4 @@
+---
 version: "3.1"
 services:
 
@@ -13,7 +14,9 @@ services:
     hostname: postgres
     container_name: postgres
     environment:
+      # set based on your imported database
       POSTGRES_DB: elahe
+      # set based on your imported database username
       POSTGRES_USER: elahe
       POSTGRES_PASSWORD: elahe
     ports:
