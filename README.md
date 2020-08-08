@@ -13,10 +13,9 @@ First of all, we must export the production database:
 ```sh
 oc project <production-namespace>
 
-oc rsh -c <database-container> <database-pod> pg_dump -U <database-user> <database-name> > output.sql
+echo "<database-password>" | oc rsh -c <database-container> <database-pod> pg_dump -U <database-user> <database-name> > output.sql
 ```
 
-As mentioed before the export file contains `Password:` prompt in the first line so remove it before any usage.
 You can use these exported data with the provided `docker-compose` to alter tables or remove redundant data.
 At the end, we export `insert`-only SQL files and load them into the testing environment.
 
@@ -31,7 +30,7 @@ delete from <table> where deleted_at is not null;
 ```sh
 oc project <testing-namespace>
 
-oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-1>.sql
-oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-2>.sql
-oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-3>.sql
+echo "<database-password>" | oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-1>.sql
+echo "<database-password>" | oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-2>.sql
+echo "<database-password>" | oc rsh -c <database-container> <database-pod> psql -U <database-user> <database-name> -f - < <table-3>.sql
 ```
