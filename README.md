@@ -2,9 +2,7 @@
 
 ## Introduction
 
-Consider an environment based on k8s that you have two separate namespace for production and testing.
-In the production environment you have an SQL database that you want its data on your testing environemnt even
-you need to change their structure and fields. Datayar is here to help you.
+Consider an environment based on k8s with two separate namespaces for production and testing. In the production environment, you have an SQL database that you want its data on your testing environment even you need to change its structure and fields. Datayar is here to help you.
 
 ## Step by Step
 
@@ -17,7 +15,7 @@ echo "<database-password>" | oc rsh -c <database-container> <database-pod> pg_du
 ```
 
 You can use these exported data with the provided `docker-compose` to alter tables or remove redundant data.
-At the end, we export `insert`-only SQL files and load them into the testing environment.
+In the end, we export `insert`-only SQL files and load them into the testing environment.
 
 e.g.
 
